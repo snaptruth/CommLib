@@ -1,0 +1,24 @@
+BnLOG 日志系统
+=====================================
+
+What is BnLOG
+----------------
+
+    BnLOG是易链所使用的log日志模块。BnLog主要用于BN系统运行时给开发人员提供统一的log日志接口；给维护人员提供统一的log日志查看方式以及格式，方便开发以及维护,目前主要提供三种接口BN_LOG_INTERFACE接口信息日志,BN_LOG_ERROR错误信息日志,BN_LOG_DEBUG调试信息日志。
+    设计文档参见http://172.16.23.248:81/zentao/doc-view-67.html。
+
+
+How to use...
+-------------------
+
+    bnlog是单独的进程文件，编译完毕之后直接运行bnlog即可。bnlog有配置文件需要配置，目录目前固定在/etc/bnlog.properties.xml。该配置文件的选项为：
+        FILEMAXSIZE="10485760"  单个log文件的大小限制，单位为字节
+        BACKUPNUM="10"          备份文件个数，每模块独享
+        CONSOLE="true">         log日志是否打印输出到屏幕
+	<FILEPATH>/tmp/log/bn/</FILEPATH>    log文件保存路径
+	<FILEPREFIX>default</FILEPREFIX>     log文件名
+	<LOGLEVEL>DEBUG</LOGLEVEL>           log记录级别，目前控制DEBUG是否使能
+    需要使用bnlog的进程，需要用到头文件bnlogif.h，另外需在makefile中添加包含头文件bnconst.h,bnosutils.h,bnstruct.h,bnthread.h的路径,该头文件目前放在libSysCommon目录下的include子目录。调用动态链接库libcommonLib.so，即可通过bnlogif.h所提供的接口来使用日志功能。
+    
+
+

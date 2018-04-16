@@ -1,0 +1,6 @@
+1、libSysCommon生成的是通用动态链接库libcommonLib.so，可供需要使用日志及监控模块的进程调用。
+2、libtinyXml生成的是通用动态链接库libbntinyxml.so,由（tinyxml.h、tinystr.h、tinystr.cpp、tinyxml.cpp、tinyxmlerror.cpp、tinyxmlparser.cpp）打包而成，可供需要使用解析库的进程调用。
+3、bnlogTask生成的是日志模块进程，需要调用动态链接库libcommonLib.so，日志模块的受到监控模块监控。
+4、monitorTask生成的是监控模块进程，需要调用动态链接库libcommonLib.so，监控模块产生的日志信息输出到bnlog模块指定目录。
+
+
